@@ -18,7 +18,7 @@ class Bestand < ApplicationRecord
   end
 
   def url
-    build_url("files/#{slug}.#{file.file.extension.downcase}")
+    build_url("files/#{slug}.#{file.file.extension.downcase}") rescue 'broken url'
   end
 
   def inline_forms_attribute_list
