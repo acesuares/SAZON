@@ -34,18 +34,18 @@
             <li class="has-dropdown"><%= link_to this_module.nice_title, "/view/#{this_module.slug}" %>
               <ul class="dropdown" tabindex="-1">
                 <% this_module.documents.each do |document| %>
-                <li<%= " class=active" if document.id == this_chapter.id  && @module_begrips_page.nil? %>>
+                <li<%= " class=active" if document.id == this_chapter.id  && !@is_begrips_page %>>
                   <%= link_to document.nice_title, "/view/#{document.slug}" %>
                 </li>
                 <% end %>
-                <li <%= " class=active" if @module_begrips_page && @module_begrips_page.id == @document.id %>>
-                  <%= link_to "#{this_module.nice_begrippen_page_number} Begrippen", "/module_begrips/#{this_module.module_and_children.last.slug}" %>
+                <li <%= " class=active" if @is_begrips_page %>>
+                  <%= link_to "#{this_module.nice_begrippen_page_number} Begrippen", "/view/m#{@document.this_module_number}_begrippen" %>
                 </li>
               </ul>
             </li>
           <% end %>
         <% end %>
-        <% unless this_chapter.is_root? || !@module_begrips_page.nil? %>
+        <% unless this_chapter.is_root? || @is_begrips_page %>
           <% if this_chapter.children.empty? %>
             <li>
               <%= link_to this_chapter.nice_title, "/view/#{this_chapter.slug}" %>
@@ -63,6 +63,11 @@
             </li>
           <% end %>
         <% end %>
+        <% if @is_begrips_page %>
+          <li>
+            <%= link_to "#{this_module.nice_begrippen_page_number} Begrippen", "/view/m#{@document.this_module_number}_begrippen" %>
+          </li>
+        <% end %>
       </ul>
       <ul class="right">
         <li class="has-dropdown"><a>meer...</a>
@@ -73,7 +78,7 @@
             </li>
             <% end %>
             <li>
-              <%= link_to('Download PDF', "/view/#{@document.slug}.pdf") %>
+              <%= link_to('Download PDF', "/view/#{@document.slug}.pdf") unless @is_begrips_page %>
             </li>
             <li>
               <%= link_to('Download module as PDF', "/module_view/#{@document.slug}.pdf") if @document.is_module? %>

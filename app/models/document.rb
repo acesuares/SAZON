@@ -101,6 +101,10 @@ class Document < ActiveRecord::Base
     parent.is_root? ? self : parent.this_module
   end
 
+  def this_module_number
+    this_module.slug.last
+  end
+
   def this_chapter
     return Document.find(ROOT_ID) if self.is_module? || self.is_root? || self.has_no_parent?
     parent.is_module? ? self : parent.this_chapter
