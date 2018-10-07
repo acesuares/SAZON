@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 # created by inline_forms 5.0.16
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2'
 gem 'rake'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
@@ -13,7 +13,7 @@ gem 'carrierwave'
 gem 'remotipart', '~> 1.0'
 gem 'paper_trail'
 gem 'devise'
-gem 'inline_forms', '~> 5.1'
+gem 'inline_forms', '~> 5.2'
 gem 'validation_hints'
 gem 'mini_magick'
 gem 'rails-i18n'
@@ -49,8 +49,8 @@ group :development do
   gem 'rspec'
   gem 'listen'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem 'pry-byebug'
+  #gem 'byebug', platform: :mri
+  #gem 'pry-byebug'
 end
 
 group :development, :test do

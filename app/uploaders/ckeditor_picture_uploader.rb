@@ -8,7 +8,14 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # rip the underscore from allowed filenames
-  CarrierWave::SanitizedFile.sanitize_regexp = /(_|[^[:word:]\.\-\+])/
+  # this was NOT the way to do it, it turns out
+  # CarrierWave::SanitizedFile.sanitize_regexp = /(_|[^[:word:]\.\-\+])/
+
+  # this is the way to rip out the underscores. Carrierwave already rips out everything bad,
+  # but is replaces it hardcoded with '_'
+  def filename
+    original_filename.gsub('_','-') if original_filename
+  end
 
   # Choose what kind of storage to use for this uploader:
   storage :file

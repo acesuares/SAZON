@@ -4,6 +4,6 @@ class BestandsController < InlineFormsController
   def download
     @bestand = Bestand.find_by(slug: params[:slug])
     return redirect_to '/view/not_found' if @bestand.nil?
-    return redirect_to @bestand.file.url
+    send_data @bestand.file.data, :filename => @bestand.file.filename, :type => @bestand.content_type
   end
 end

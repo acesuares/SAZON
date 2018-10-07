@@ -6,14 +6,24 @@ class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
-
-  # rip the underscore from allowed filenames
-  CarrierWave::SanitizedFile.sanitize_regexp = /(_|[^[:word:]\.\-\+])/
 
   # Choose what kind of storage to use for this uploader:
   storage :file
+
+  # rip the underscore from allowed filenames
+  # this was NOT the way to do it, it turns out
+  # CarrierWave::SanitizedFile.sanitize_regexp = /(_|[^[:word:]\.\-\+])/
+
+  # this is the way to rip out the underscores. Carrierwave already rips out everything bad,
+  # but is replaces it hardcoded with '_'
+
+  # for some reason, MiniMagick needs to be enabled: https://github.com/galetahub/ckeditor/issues/820
+
+  def filename
+    original_filename.gsub('_','-') if original_filename
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
