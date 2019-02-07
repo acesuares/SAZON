@@ -42,6 +42,11 @@ body {
     font-family: "Dosis";
   }
 
+  h6 {
+      font-size: 0.9rem;
+      line-height: 1.1;
+  }
+
   ul, ol, dl {
     font-family: inherit;
     font-size: 0.8rem;
@@ -81,11 +86,11 @@ nav#sazon_top_bar, #sazon_top_bar_container {
     border-radius: 0;
     margin-bottom: 30px;
     padding: 30px 16px 15px;
-    background-size: 105%;
+    background-size: 107%;
     margin: 0;
-    width: 80%;
+    margin-bottom: 0px;
+    width: 90%;
 }
-
 
 .row.begrippen {
   background: rgba(255, 255, 255, 0.70) none repeat scroll 0 0;

@@ -49,9 +49,3 @@
   <div class="sidebar_area column medium-4 large-3">
   </div>
 </div>
-<% content_for :javascript do %>
-  // Needed reinitialization in order to fix overlapping item elements
-  $( window ).load(function() {
-    $('.masonry_area').masonry({ "itemSelector": ".masonry_image", "columnWidth": <%= @masonry_column_width %>, gutter: 1 })
-  });
-<% end %>
