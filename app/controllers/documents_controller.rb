@@ -8,10 +8,17 @@ class DocumentsController < InlineFormsController
       this_module = Document.find_by(slug: "module#{module_number}")
       return redirect_to '/view/not_found' if this_module.nil?
       @document = this_module.children.last.first
+      @module_begrips_alphabetized = @document.module_begrips_alphabetized
       @is_begrips_page = true
-      @begrips = @document.module_begrips
-      @isms = @document.module_isms
       return render 'module_begrips', layout: 'view'
+    elsif !params[:slug].nil? && params[:slug].match(/\Am[0-6]_isms\z/)
+      module_number = params[:slug][1]
+      this_module = Document.find_by(slug: "module#{module_number}")
+      return redirect_to '/view/not_found' if this_module.nil?
+      @document = this_module.children.last.first
+      @module_isms_alphabetized = @document.module_isms_alphabetized
+      @is_isms_page = true
+      return render 'module_isms', layout: 'view'
     else
       @document = Document.find_by(slug: params[:slug])
       return redirect_to '/view/not_found' if @document.nil?

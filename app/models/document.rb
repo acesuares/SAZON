@@ -41,6 +41,11 @@ class Document < ActiveRecord::Base
     (documents.last.nice_number.to_f + 0.1).round(1).to_s
   end
 
+  def nice_isms_page_number
+    (documents.last.nice_number.to_f + 0.2).round(1).to_s
+  end
+
+
   def nice_title
     nice_number.length > 1 ? "#{nice_number} #{title}" : title
   end
@@ -137,11 +142,51 @@ class Document < ActiveRecord::Base
     begrips.flatten.uniq.sort
   end
 
+  def begrips_alphabetized
+    begrips_alphabetized = {}
+    self.begrips.each do |begrip|
+      first_letter = begrip.name[0].downcase
+      begrips_alphabetized[first_letter] = [] if begrips_alphabetized[first_letter].nil?
+      begrips_alphabetized[first_letter] << begrip
+    end
+    begrips_alphabetized
+  end
+
+  def module_begrips_alphabetized
+    module_begrips_alphabetized = {}
+    self.module_begrips.each do |begrip|
+      first_letter = begrip.name[0].downcase
+      module_begrips_alphabetized[first_letter] = [] if module_begrips_alphabetized[first_letter].nil?
+      module_begrips_alphabetized[first_letter] << begrip
+    end
+    module_begrips_alphabetized
+  end
+
   def isms
     isms = []
     isms << Begrip.only_isms.where(name: text_begrips)
     isms << Begrip.only_isms.joins(:related_words).where(related_words: { name: text_begrips } )
     isms.flatten.uniq.sort
+  end
+
+  def isms_alphabetized
+    isms_alphabetized = {}
+    self.isms.each do |ism|
+      first_letter = ism.name[0].downcase
+      isms_alphabetized[first_letter] = [] if isms_alphabetized[first_letter].nil?
+      isms_alphabetized[first_letter] << ism
+    end
+    isms_alphabetized
+  end
+
+  def module_isms_alphabetized
+    module_isms_alphabetized = {}
+    self.module_isms.each do |ism|
+      first_letter = ism.name[0].downcase
+      module_isms_alphabetized[first_letter] = [] if module_isms_alphabetized[first_letter].nil?
+      module_isms_alphabetized[first_letter] << ism
+    end
+    module_isms_alphabetized
   end
 
   def text_begrips
