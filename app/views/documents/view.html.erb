@@ -32,35 +32,15 @@
 
     <% if @document.id == 33 # begrippen %>
       <div class="row content_area_begrippen">
-        <% Begrip.exclude_isms.order(:name).each do |begrip| %>
-          <div class="row begrip_row">
-            <div class="column begrip_name small-3">
-              <%= begrip.name %>
-            </div>
-            <div class="column begrip_description small-9">
-              <%= begrip.description.html_safe %>
-              <%= begrip.related_words_text('<br />Gerelateerde begrippen: ').html_safe %>
-            </div>
-          </div>
-        <% end %>
+        <%= show_alphabetized_list_of_items Begrip.begrips_alphabetized, 'begrip' %>
       </div>
      <% end %>
 
      <% if @document.id == 100 # genres & stromingen %>
-       <div class="row content_area_begrippen">
-         <% Begrip.only_isms.order(:name).each do |begrip| %>
-           <div class="row begrip_row">
-             <div class="column begrip_name small-3">
-               <%= begrip.name %>
-             </div>
-             <div class="column begrip_description small-9">
-               <%= begrip.description.html_safe %>
-               <%= begrip.related_words_text('<br />Gerelateerde begrippen: ').html_safe %>
-             </div>
-           </div>
-         <% end %>
-       </div>
-      <% end %>
+      <div class="row content_area_begrippen">
+        <%= show_alphabetized_list_of_items Begrip.isms_alphabetized, 'isms' %>
+      </div>
+    <% end %>
 
     <% unless @document.images.empty? %>
       <div class="row masonry_area">

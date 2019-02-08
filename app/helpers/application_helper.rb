@@ -54,7 +54,7 @@ module ApplicationHelper
         content += "<h3 class='alphabet' id='#{class_name}_#{current_letter}'>"
           content += show_alphabet(available_letters, current_letter, class_name)
         content += "</h3>"
-        alphabetized_list_of_items[current_letter].sort.each do |item|
+        alphabetized_list_of_items[current_letter].sort{|a1,a2| a1.name.downcase <=> a2.name.downcase}.each do |item|
           content += "<div class='row #{class_name}_row'>"
             content += "<div class='column #{class_name}_name small-3'>"
               content += item.name

@@ -20,6 +20,26 @@ class Begrip < ActiveRecord::Base
     "#{start_text}#{related_words.map(&:name).join(', ')}#{end_text}"
   end
 
+  def self.begrips_alphabetized
+    begrips_alphabetized = {}
+    self.exclude_isms.each do |begrip|
+      first_letter = begrip.name[0].downcase
+      begrips_alphabetized[first_letter] = [] if begrips_alphabetized[first_letter].nil?
+      begrips_alphabetized[first_letter] << begrip
+    end
+    begrips_alphabetized
+  end
+
+  def self.isms_alphabetized
+    isms_alphabetized = {}
+    self.only_isms.each do |ism|
+      first_letter = ism.name[0].downcase
+      isms_alphabetized[first_letter] = [] if isms_alphabetized[first_letter].nil?
+      isms_alphabetized[first_letter] << ism
+    end
+    isms_alphabetized
+  end
+
   validates :name, :presence => true
 
   def inline_forms_attribute_list
