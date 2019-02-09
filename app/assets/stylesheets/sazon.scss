@@ -2,12 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic);
 @import 'lightbox';
 
-body {
-	background: rgba(0, 0, 0, 0) url("https://sazon.id-arte.net/uploads/ckeditor/pictures/17/content_bg-left.jpg") no-repeat fixed 0 0 / 55% auto;
-}
 
 #sazon_outer_container {
-	background: rgba(0, 0, 0, 0) url("https://sazon.id-arte.net/uploads/ckeditor/pictures/21/content_bg-right.jpg") no-repeat fixed right 0 / 49% auto;
 	margin-bottom: 0;
 	min-height: 100vh;
 	p, div {
@@ -98,9 +94,33 @@ nav#sazon_top_bar, #sazon_top_bar_container {
 
 
 .row.sidebar {
-	background: #dde2ed none repeat scroll 0 0;
+  background: rgba(255,255,255,0.9) none repeat scroll 0 0;
 }
 
+.left_bg_m0 {
+    background: transparent url("/uploads/ckeditor/pictures/17/content_bg-left.jpg") no-repeat fixed 0 0/55% auto;
+}
+.left_bg_m1 {
+    background: transparent url("/uploads/ckeditor/pictures/473/content_m1-1.jpg") repeat fixed right 0/12% auto;
+}
+.left_bg_m2 {
+    background: transparent url("/uploads/ckeditor/pictures/480/content_m2-1.jpg") no-repeat fixed 0 0/55% auto
+}
+.left_bg_m3 {
+    background: transparent url("/uploads/ckeditor/pictures/477/content_m3-1.jpg") no-repeat fixed 0 0/55% auto
+}
+.right_bg_m0 {
+    background: transparent url("/uploads/ckeditor/pictures/21/content_bg-right.jpg") no-repeat fixed right 0/49% auto;
+}
+.right_bg_m1 {
+    background: transparent url("/uploads/ckeditor/pictures/474/content_m1-2.jpg") no-repeat fixed right 0/49% auto;
+}
+.right_bg_m2 {
+    background: transparent url("/uploads/ckeditor/pictures/476/content_m2-2.jpg") no-repeat fixed right 0/49% auto;
+}
+.right_bg_m3 {
+    background: transparent url("/uploads/ckeditor/pictures/481/content_m3-2.jpg") no-repeat fixed right 0/49% auto;
+}
 
 .sidebar_area h3 {
 	color: #a60c8e;
