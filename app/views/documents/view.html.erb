@@ -34,9 +34,9 @@
       <div class="row content_area_begrippen">
         <%= show_alphabetized_list_of_items Begrip.begrips_alphabetized, 'begrip' %>
       </div>
-     <% end %>
+    <% end %>
 
-     <% if @document.id == 100 # genres & stromingen %>
+    <% if @document.id == 100 # genres & stromingen %>
       <div class="row content_area_begrippen">
         <%= show_alphabetized_list_of_items Begrip.isms_alphabetized, 'isms' %>
       </div>
@@ -73,7 +73,6 @@
           <%= raw @content %>
       </div>
     <% end %>
-
   </div>
 
   <div class="sidebar_area column medium-4 large-3">
@@ -110,7 +109,7 @@
       <div class="row begrippen">
         <h3>BEGRIPPEN</h3>
         <ul>
-          <% @document.begrips.each do |begrip| %>
+          <% @document.begrips.sort{|a1,a2| a1.name.downcase <=> a2.name.downcase}.each do |begrip| %>
             <li>
               <span data-tooltip data-options="hover_delay: 10;" aria-haspopup="true" class="has-tip tip-bottom radius" title="
               <%= begrip.description %>
@@ -126,7 +125,7 @@
       <div class="row isms">
         <h3>GENRES &amp; STROMINGEN</h3>
         <ul>
-          <% @document.isms.each do |ism| %>
+          <% @document.isms.sort{|a1,a2| a1.name.downcase <=> a2.name.downcase}.each do |ism| %>
             <li>
               <span data-tooltip data-options="hover_delay: 10;" aria-haspopup="true" class="has-tip tip-bottom radius" title="
               <%= ism.description %>
@@ -144,4 +143,6 @@
   $( window ).load(function() {
     $('.masonry_area').masonry({ "itemSelector": ".masonry_image", "columnWidth": <%= @masonry_column_width %>, gutter: 1 })
   });
+  $('.content_area').css('min-height',$('.sidebar_area').css('height'));
+  $('.sidebar_area').css('min-height',$('.content_area').css('height'));
 <% end %>

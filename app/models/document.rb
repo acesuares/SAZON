@@ -107,12 +107,20 @@ class Document < ActiveRecord::Base
   end
 
   def this_module_number
-    this_module.slug.last
+    this_module.slug.last.to_i.to_s
   end
 
   def this_chapter
     return Document.find(ROOT_ID) if self.is_module? || self.is_root? || self.has_no_parent?
     parent.is_module? ? self : parent.this_chapter
+  end
+
+  def left_background_class
+    "left_bg_m#{this_module_number}"
+  end
+
+  def right_background_class
+    "right_bg_m#{this_module_number}"
   end
 
   def module_begrips

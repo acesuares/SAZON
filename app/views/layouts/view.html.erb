@@ -10,8 +10,8 @@
     <script>/* foo */</script>
   </head>
 
-  <body>
-    <div id="sazon_outer_container">
+  <body class="<%= @document.left_background_class %>">
+    <div id="sazon_outer_container" class="<%= @document.right_background_class %>">
       <%= yield %>
     </div>
     <div id="sazon_footer">

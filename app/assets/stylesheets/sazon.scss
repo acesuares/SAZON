@@ -3,12 +3,15 @@
 
 @import 'lightbox';
 
+html{
+}
 body {
   background: rgba(0, 0, 0, 0) url("https://sazon.id-arte.net/uploads/ckeditor/pictures/17/content_bg-left.jpg") no-repeat fixed 0 0 / 55% auto;
 }
 #sazon_outer_container {
   background: rgba(0, 0, 0, 0) url("https://sazon.id-arte.net/uploads/ckeditor/pictures/21/content_bg-right.jpg") no-repeat fixed right 0 / 49% auto;
   margin-bottom: 0;
+  min-height: 100vh;
 
   p, div {
     font-size: 0.85rem!important;
@@ -36,7 +39,7 @@ body {
   .alphabet_active {
       color: red;
   }
-  
+
   h4 {
     font-size: 1rem!important;
   }
@@ -64,11 +67,12 @@ nav#sazon_top_bar, #sazon_top_bar_container {
   background: #5f3557 none repeat scroll 0 0!important;
 }
 
-.content_area.column.medium-8.large-9 {
+
+.content_area {
   background: white none repeat scroll 0 0;
   padding-top:0!important;
   margin-bottom:0;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .sidebar_area h3 {
