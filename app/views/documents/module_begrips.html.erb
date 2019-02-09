@@ -4,7 +4,7 @@
     <div class="row navigation">
       <div class="right">
         <%= link_to image_tag('previous.png', id: "previous_button"), "/view/#{@document.slug}" unless @document.previous.nil? %>
-        <%= link_to image_tag('next.png', id: "next_button"), "/view/#{@document.next.slug}" unless @document.next.nil? %>
+        <%= link_to image_tag('next.png', id: "next_button"), "/view/#{@document.slug[0..1]}_isms" unless @document.next.nil? %>
       </div>
     </div>
 
@@ -15,7 +15,6 @@
     </div>
 
     <div class="row content_area_begrippen">
-      <h2>Begrippen</h2>
       <%= show_alphabetized_list_of_items @module_begrips_alphabetized, 'begrip' %>
     </div>
 

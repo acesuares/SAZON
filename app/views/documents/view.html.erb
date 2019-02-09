@@ -3,12 +3,12 @@
   <div class="content_area column medium-8 large-9">
     <div class="row navigation">
       <div class="right">
-        <% if @document.is_module? && @document.previous && !@document.previous.is_root? && @document.previous.module_any_begrip_or_ism?  %>
-          <%= link_to image_tag('previous.png', id: "previous_button"), "/view/#{@document.previous.slug[0..1]}_begrippen" unless @document.previous.nil? %>
+        <% if @document.is_module? && @document.previous && !@document.previous.is_root? && @document.previous.module_with_isms?  %>
+          <%= link_to image_tag('previous.png', id: "previous_button"), "/view/#{@document.previous.slug[0..1]}_isms" unless @document.previous.nil? %>
         <% else %>
           <%= link_to image_tag('previous.png', id: "previous_button"), "/view/#{@document.previous.slug}" unless @document.previous.nil? %>
         <% end %>
-        <% if @document.is_module_last_document? && @document.module_any_begrip_or_ism?  %>
+        <% if @document.is_module_last_document? && @document.module_with_begrips?  %>
           <%= link_to image_tag('next.png', id: "next_button"), "/view/#{@document.slug[0..1]}_begrippen" %>
         <% else %>
           <%= link_to image_tag('next.png', id: "next_button"), "/view/#{@document.next.slug}" unless @document.next.nil? %>
@@ -38,7 +38,7 @@
 
     <% if @document.id == 100 # genres & stromingen %>
       <div class="row content_area_begrippen">
-        <%= show_alphabetized_list_of_items Begrip.isms_alphabetized, 'isms' %>
+        <%= show_alphabetized_list_of_items Begrip.isms_alphabetized, 'ism' %>
       </div>
     <% end %>
 

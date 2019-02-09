@@ -139,10 +139,6 @@ class Document < ActiveRecord::Base
     module_and_children.detect {|d| d.isms.count > 0 }
   end
 
-  def module_any_begrip_or_ism?
-    module_with_begrips? || module_with_isms?
-  end
-
   def begrips
     begrips = []
     begrips << Begrip.exclude_isms.where(name: text_begrips)

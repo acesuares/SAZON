@@ -61,7 +61,7 @@ module ApplicationHelper
             content += "</div>"
             content += "<div class='column #{class_name}_description small-9'>"
               content += item.description
-              content += item.related_words_text('<br />Gerelateerde begrippen: ')
+              content += item.related_words_text('Gerelateerde begrippen: ')
             content += "</div>"
           content += "</div>"
         end
