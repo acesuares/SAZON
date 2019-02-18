@@ -90,7 +90,7 @@
             </li>
             <% end %>
             <li>
-              <%= link_to('Download PDF', "/view/#{@document.slug}.pdf") unless @is_begrips_page %>
+              <%= link_to('Download PDF', "/view/#{@document.slug}.pdf") unless @is_begrips_page || @is_isms_page %>
             </li>
             <li>
               <%= link_to('Download module as PDF', "/module_view/#{@document.slug}.pdf") if @document.is_module? %>

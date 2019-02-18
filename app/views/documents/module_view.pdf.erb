@@ -17,34 +17,37 @@
       </h1>
     </div>
 
-    <div class="row content_area_begrippen">
+    <div class="content_area_begrippen">
       <h2>Genres & Stromingen</h2>
-      <% @document.module_isms.each do |ism| %>
-        <div class="row begrip_row">
-          <div class="column begrip_name small-3">
-            <h3><%= ism.name %></h3>
-          </div>
-          <div class="column begrip_description small-9">
-            <%= ism.description.html_safe %>
-            <%= ism.related_words_text('<br />Gerelateerde begrippen: ').html_safe %>
-          </div>
-        </div>
-      <% end %>
+      <table class="content_area_begrippen">
+        <% @document.module_isms.each do |begrip| %>
+          <tr>
+            <td class="begrip_name">
+              <%= begrip.name %>
+            </td>
+            <td class="begrip_description">
+              <%= begrip.description.html_safe %>
+              <%= begrip.related_words_text('<br />Gerelateerde begrippen: ').html_safe %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
 
-    <div class="row content_area_begrippen">
+    <div class="content_area_begrippen pb_before">
       <h2>Begrippen</h2>
-      <% @document.module_begrips.each do |begrip| %>
-        <div class="row begrip_row">
-          <div class="column begrip_name small-3">
-            <h3><%= begrip.name %></h3>
-          </div>
-          <div class="column begrip_description small-9">
-            <%= begrip.description.html_safe %>
-            <%= begrip.related_words_text('<br />Gerelateerde begrippen: ').html_safe %>
-          </div>
-        </div>
-      <% end %>
+      <table class="content_area_begrippen">
+        <% @document.module_begrips.each do |begrip| %>
+          <tr>
+            <td class="begrip_name">
+              <%= begrip.name %>
+            </td>
+            <td class="begrip_description">
+              <%= begrip.description.html_safe %>
+              <%= begrip.related_words_text('<br />Gerelateerde begrippen: ').html_safe %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
-  </div>
 <% end %>
