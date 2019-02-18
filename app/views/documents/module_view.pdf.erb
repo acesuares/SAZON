@@ -9,7 +9,7 @@
   <% end %>
 </div>
 
-<% if @document.module_any_begrip_or_ism? %>
+<% if @document.module_with_isms? || @document.module_with_begrips? %>
   <div class="content_area column medium-8 large-9 pb_before">
     <div class="row content_area_title_above">
       <h1 class="title">
