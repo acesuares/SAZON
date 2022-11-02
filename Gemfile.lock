@@ -208,7 +208,7 @@ GEM
     paper_trail (11.1.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    pdfkit (0.8.5)
+    pdfkit (0.8.7.2)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
